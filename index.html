@@ -47,8 +47,8 @@
               Usar boost
             </button>
             <a class="btn btn-contorno" href="#modos">Ver modos</a>
-            <button class="btn" id="btnTime" type="button">
-              Trocar de time
+            <button class="btn" id="btnTime" type="button" aria-pressed="false">
+              Time: Azul
             </button>
           </div>
         </div>
@@ -377,7 +377,6 @@
   <script>
     // Boost e placar
     var boost = 0;
-    var gols = 0;
     var barra = document.getElementById("barra");
     var texto = document.getElementById("textoBoost");
     var btnBoost = document.getElementById("btnBoost");
@@ -389,13 +388,23 @@
       medidor.setAttribute("aria-valuenow", boost);
       btnBoost.classList.toggle("cheio", boost === 100);
     });
-    document.getElementById("btnGol").addEventListener("click", function () {
-      gols++;
-      document.getElementById("golsAzul").textContent = gols;
+    var timeLaranja = false;
+    var placarTimes = { azul: 0, laranja: 0 };
+    var btnGol = document.getElementById("btnGol");
+    btnGol.addEventListener("click", function () {
+      var laranja = document.body.classList.contains("time-laranja");
+      var time = laranja ? "laranja" : "azul";
+      placarTimes[time]++;
+      document.getElementById(laranja ? "golsLaranja" : "golsAzul").textContent = placarTimes[time];
     });
     // Troca de time (azul / laranja)
-    document.getElementById("btnTime").addEventListener("click", function () {
-      document.body.classList.toggle("time-laranja");
+    var btnTime = document.getElementById("btnTime");
+    btnTime.addEventListener("click", function () {
+      timeLaranja = !timeLaranja;
+      document.body.classList.toggle("time-laranja", timeLaranja);
+      btnTime.textContent = timeLaranja ? "Time: Laranja" : "Time: Azul";
+      btnGol.textContent = timeLaranja ? "Marcar gol laranja" : "Marcar gol azul";
+      btnTime.setAttribute("aria-pressed", timeLaranja);
     });
     // Controles do Flexbox Lab
     var lab = document.getElementById("labFlex");
