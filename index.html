@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Site de estudo de HTML e CSS com o tema Rocket League.">
+  <meta name="author" content="Aluno">
+  <title>Rocket League | Arena de HTML e CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Russo+One&display=swap" rel="stylesheet">
+  <!-- CSS EXTERNO: ligado ao HTML pela tag link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- CABECALHO E MENU -->
+  <header class="topo">
+    <div class="container">
+      <a href="#inicio" class="logo">ROCKET<span>LAB</span></a>
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#modos">Modos</a></li>
+          <li><a href="#carros">Carros</a></li>
+          <li><a href="#ranks">Ranks</a></li>
+          <li><a href="#boxmodel">Box Model</a></li>
+          <li><a href="#flexbox">Flexbox</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-texto">
+          <h1>Futebol com <em>carros</em> voadores</h1>
+          <p>
+            Rocket League mistura corrida e futebol: sao carros
+            turbinados, uma bola gigante e uma arena cheia de boost.
+            Este site usa HTML e CSS para mostrar o jogo e estudar
+            Box Model e Flexbox.
+          </p>
+          <div class="hero-acoes">
+            <button class="btn btn-boost" id="btnBoost" type="button">
+              Usar boost
+            </button>
+            <a class="btn btn-contorno" href="#modos">Ver modos</a>
+            <button class="btn" id="btnTime" type="button">
+              Trocar de time
+            </button>
+          </div>
+        </div>
+        <aside class="placar" aria-label="Placar da partida">
+          <h2>Placar</h2>
+          <div class="times">
+            <span class="azul" id="golsAzul">0</span>
+            <span>x</span>
+            <span class="laranja" id="golsLaranja">0</span>
+          </div>
+          <div class="medidor" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="medidor">
+            <div class="medidor-barra" id="barra"></div>
+          </div>
+          <p id="textoBoost">Boost: 0%</p>
+          <button class="btn" id="btnGol" type="button">Marcar gol azul</button>
+        </aside>
+      </div>
+    </section>
+    <!-- MODOS DE JOGO -->
+    <section class="secao" id="modos">
+      <div class="container">
+        <h2>Modos de jogo</h2>
+        <p class="intro">
+          Cada modo muda a regra da partida. Passe o mouse sobre
+          os cartoes para ver o efeito de hover.
+        </p>
+        <div class="modos">
+          <article class="modo">
+            <div>
+              <h3>Soccar</h3>
+              <p>O modo classico: 3 contra 3 em uma arena de futebol.</p>
+            </div>
+            <span class="etiqueta">Classico</span>
+          </article>
+          <article class="modo">
+            <div>
+              <h3>Hoops</h3>
+              <p>Basquete com carros. Cesta e anel no lugar do gol.</p>
+            </div>
+            <span class="etiqueta">Basquete</span>
+          </article>
+          <article class="modo">
+            <div>
+              <h3>Rumble</h3>
+              <p>Poderes aleatorios como ima, soco e ventilador.</p>
+            </div>
+            <span class="etiqueta">Poderes</span>
+          </article>
+          <article class="modo">
+            <div>
+              <h3>Dropshot</h3>
+              <p>A bola quebra o piso do adversario ate abrir um buraco.</p>
+            </div>
+            <span class="etiqueta">Piso</span>
+          </article>
+          <article class="modo">
+            <div>
+              <h3>Snow Day</h3>
+              <p>Hoquei: a bola vira um disco que desliza pelo gelo.</p>
+            </div>
+            <span class="etiqueta">Hoquei</span>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- CARROS (abas feitas so com HTML e CSS) -->
+    <section class="secao" id="carros">
+      <div class="container">
+        <h2>Garagem</h2>
+        <p class="intro">
+          Clique nas abas para trocar de carro. As abas usam
+          inputs de tipo radio e o seletor :checked, sem JavaScript.
+        </p>
+        <div class="garagem">
+          <input class="abas-radio" type="radio" name="carro" id="tab1" checked>
+          <input class="abas-radio" type="radio" name="carro" id="tab2">
+          <input class="abas-radio" type="radio" name="carro" id="tab3">
+          <input class="abas-radio" type="radio" name="carro" id="tab4">
+          <div class="abas">
+            <label class="l1" for="tab1">Octane</label>
+            <label class="l2" for="tab2">Fennec</label>
+            <label class="l3" for="tab3">Dominus</label>
+            <label class="l4" for="tab4">Breakout</label>
+          </div>
+          <div class="paineis">
+            <div class="painel-aba p1">
+              <div class="carro-icone" aria-hidden="true">&#128663;</div>
+              <div>
+                <h3>Octane</h3>
+                <p>O carro mais famoso do jogo. Equilibrado, ideal para quem esta comecando.</p>
+                <span class="etiqueta">Hitbox Octane</span>
+              </div>
+            </div>
+            <div class="painel-aba p2">
+              <div class="carro-icone" aria-hidden="true">&#128661;</div>
+              <div>
+                <h3>Fennec</h3>
+                <p>Visual quadrado e hitbox igual a do Octane. Muito usado nos campeonatos.</p>
+                <span class="etiqueta">Hitbox Octane</span>
+              </div>
+            </div>
+            <div class="painel-aba p3">
+              <div class="carro-icone" aria-hidden="true">&#127950;</div>
+              <div>
+                <h3>Dominus</h3>
+                <p>Longo e baixo, bom para dribles e chutes precisos na bola.</p>
+                <span class="etiqueta">Hitbox Dominus</span>
+              </div>
+            </div>
+            <div class="painel-aba p4">
+              <div class="carro-icone" aria-hidden="true">&#128665;</div>
+              <div>
+                <h3>Breakout</h3>
+                <p>Comprido e estreito, com bom alcance nas disputas de bola.</p>
+                <span class="etiqueta">Hitbox Plank</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- RANKS (tabela) -->
+    <section class="secao" id="ranks">
+      <div class="container">
+        <h2>Ranks competitivos</h2>
+        <p class="intro">
+          Uma tabela HTML com cabecalho, corpo e legenda.
+        </p>
+        <div class="tabela-rolagem">
+          <table>
+            <caption class="sr-only">Lista de ranks do modo competitivo</caption>
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Nivel</th>
+                <th scope="col">Dica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Bronze</td><td>Iniciante</td><td>Aprenda a controlar o carro</td></tr>
+              <tr><td>Prata</td><td>Basico</td><td>Treine o uso do boost</td></tr>
+              <tr><td>Ouro</td><td>Intermediario</td><td>Comece a pular e girar</td></tr>
+              <tr><td>Platina</td><td>Avancado</td><td>Melhore a rotacao</td></tr>
+              <tr><td>Diamante</td><td>Experiente</td><td>Jogue em equipe</td></tr>
+              <tr><td>Campeao</td><td>Expert</td><td>Domine jogadas aereas</td></tr>
+              <tr><td>Grande Campeao</td><td>Elite</td><td>Leia o jogo adversario</td></tr>
+              <tr><td>Super Sonic Legend</td><td>Lenda</td><td>Perfeicao mecanica</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- BOX MODEL LAB: 20 ELEMENTOS -->
+    <section class="secao" id="boxmodel">
+      <div class="container">
+        <h2>Box Model Lab</h2>
+        <p class="intro">
+          Sao 20 elementos. Cada um tem valores proprios de Content
+          (width e height), Padding, Border e Margin definidos no
+          style.css. Passe o mouse para destacar a caixa.
+        </p>
+        <div class="lab-caixas">
+          <article class="caixa" id="el-01"><h4>01 Octane</h4>
+    <p>Content 120x70</p></article>
+          <article class="caixa" id="el-02"><h4>02 Fennec</h4>
+    <p>Content 130x70</p></article>
+          <article class="caixa" id="el-03"><h4>03 Dominus</h4>
+    <p>Content 110x80</p></article>
+          <article class="caixa" id="el-04"><h4>04 Breakout</h4>
+    <p>Content 140x60</p></article>
+          <article class="caixa" id="el-05"><h4>05 Merc</h4>
+    <p>Content 100x90</p></article>
+          <article class="caixa" id="el-06"><h4>06 Venom</h4>
+    <p>Content 150x64</p></article>
+          <article class="caixa" id="el-07"><h4>07 Takumi</h4>
+    <p>Content 115x76</p></article>
+          <article class="caixa" id="el-08"><h4>08 Road Hog</h4>
+    <p>Content 125x66</p></article>
+          <article class="caixa" id="el-09"><h4>09 Gizmo</h4>
+    <p>Content 105x84</p></article>
+          <article class="caixa" id="el-10"><h4>10 Masamune</h4>
+    <p>Content 135x72</p></article>
+          <article class="caixa" id="el-11"><h4>11 Boost</h4>
+    <p>Content 118x68</p></article>
+          <article class="caixa" id="el-12"><h4>12 Bola</h4>
+    <p>Content 128x78</p></article>
+          <article class="caixa" id="el-13"><h4>13 Gol</h4>
+    <p>Content 108x74</p></article>
+          <article class="caixa" id="el-14"><h4>14 Arena</h4>
+    <p>Content 142x62</p></article>
+          <article class="caixa" id="el-15"><h4>15 Rodas</h4>
+    <p>Content 112x82</p></article>
+          <article class="caixa" id="el-16"><h4>16 Antena</h4>
+    <p>Content 122x70</p></article>
+          <article class="caixa" id="el-17"><h4>17 Trilha</h4>
+    <p>Content 132x66</p></article>
+          <article class="caixa" id="el-18"><h4>18 Titulo</h4>
+    <p>Content 104x86</p></article>
+          <article class="caixa" id="el-19"><h4>19 Replay</h4>
+    <p>Content 138x64</p></article>
+          <article class="caixa" id="el-20"><h4>20 Troféu</h4>
+    <p>Content 116x78</p></article>
+        </div>
+      </div>
+    </section>
+    <!-- FLEXBOX LAB: 20 PROPRIEDADES -->
+    <section class="secao" id="flexbox">
+      <div class="container">
+        <h2>Flexbox Lab</h2>
+        <p class="intro">
+          Use os botoes para mudar a direcao e a quebra de linha
+          do container. Redimensione a janela para ver o layout
+          responsivo funcionando.
+        </p>
+        <div class="controles-flex">
+          <button class="btn btn-contorno" type="button" data-acao="linha">Linha</button>
+          <button class="btn btn-contorno" type="button" data-acao="coluna">Coluna</button>
+          <button class="btn btn-contorno" type="button" data-acao="reverso">Linha reversa</button>
+          <button class="btn btn-contorno" type="button" data-acao="invertido">Wrap reverso</button>
+        </div>
+        <div class="lab-flex" id="labFlex">
+          <div class="item">Item 1</div>
+          <div class="item">Item 2</div>
+          <div class="item">Item 3</div>
+          <div class="item">Item 4</div>
+          <div class="item">Item 5</div>
+        </div>
+        <ul class="lista-flex">
+          <li><code>1. display: flex</code> cria o container flexivel.</li>
+          <li><code>2. display: inline-flex</code> container em linha, usado nos botoes.</li>
+          <li><code>3. flex-direction</code> define o eixo principal.</li>
+          <li><code>4. flex-wrap</code> permite quebrar linhas.</li>
+          <li><code>5. flex-flow</code> junta direction e wrap.</li>
+          <li><code>6. justify-content</code> alinha no eixo principal.</li>
+          <li><code>7. align-items</code> alinha no eixo cruzado.</li>
+          <li><code>8. align-content</code> distribui as linhas.</li>
+          <li><code>9. gap</code> espaco entre os itens.</li>
+          <li><code>10. row-gap</code> espaco entre linhas.</li>
+          <li><code>11. column-gap</code> espaco entre colunas.</li>
+          <li><code>12. order</code> muda a ordem visual do item.</li>
+          <li><code>13. flex-grow</code> quanto o item cresce.</li>
+          <li><code>14. flex-shrink</code> quanto o item encolhe.</li>
+          <li><code>15. flex-basis</code> tamanho inicial do item.</li>
+          <li><code>16. flex</code> atalho de grow, shrink e basis.</li>
+          <li><code>17. align-self</code> alinhamento individual.</li>
+          <li><code>18. place-content</code> atalho de align e justify content.</li>
+          <li><code>19. row-reverse</code> inverte a direcao da linha.</li>
+          <li><code>20. wrap-reverse</code> inverte a quebra de linha.</li>
+        </ul>
+      </div>
+    </section>
+    <!-- PERGUNTAS FREQUENTES -->
+    <section class="secao" id="faq">
+      <div class="container">
+        <h2>Perguntas frequentes</h2>
+        <p class="intro">Clique em cada pergunta para abrir a resposta.</p>
+        <details>
+          <summary>Rocket League e gratuito?</summary>
+          <p>Sim. Desde 2020 o jogo e free to play em varias plataformas.</p>
+        </details>
+        <details>
+          <summary>Quantos jogadores tem uma partida?</summary>
+          <p>O padrao e 3 contra 3, mas existem modos 1x1, 2x2 e 4x4.</p>
+        </details>
+        <details>
+          <summary>O que e boost?</summary>
+          <p>E o combustivel do carro. Coletando os cristais da arena voce acelera e voa.</p>
+        </details>
+        <details>
+          <summary>Posso jogar com amigos de outras plataformas?</summary>
+          <p>Sim, o jogo tem cross-platform play e grupos entre plataformas.</p>
+        </details>
+        <details>
+          <summary>Qual a melhor forma de treinar?</summary>
+          <p>Use o modo Treino livre e os pacotes de treino para praticar jogadas.</p>
+        </details>
+      </div>
+    </section>
+    <!-- FORMULARIO DE CONTATO -->
+    <section class="secao" id="contato">
+      <div class="container">
+        <h2>Entre no time</h2>
+        <p class="intro">
+          Um formulario HTML com varios tipos de campos e validacao.
+        </p>
+        <form class="formulario" id="formTime" action="#" method="post">
+          <div class="campo">
+            <label for="nick">Nome de jogador</label>
+            <input type="text" id="nick" name="nick" placeholder="Ex: SuperSonic" required minlength="3">
+          </div>
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="voce@email.com" required>
+          </div>
+          <div class="campo">
+            <label for="carro">Carro favorito</label>
+            <select id="carro" name="carro">
+              <option value="octane">Octane</option>
+              <option value="fennec">Fennec</option>
+              <option value="dominus">Dominus</option>
+              <option value="breakout">Breakout</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="nivel">Nivel de boost: <output id="saida">50</output>%</label>
+            <input type="range" id="nivel" name="nivel" min="0" max="100" value="50">
+          </div>
+          <div class="campo">
+            <label for="msg">Mensagem</label>
+            <textarea id="msg" name="msg" rows="4" placeholder="Conte seu estilo de jogo"></textarea>
+          </div>
+          <button class="btn btn-boost" type="submit">Enviar inscricao</button>
+          <p class="mensagem" id="mensagem" role="status">Inscricao enviada! Bom jogo!</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- RODAPE -->
+  <footer class="rodape">
+    <div class="container">
+      <p>Projeto de estudo de HTML e CSS. Rocket League e marca da Psyonix.</p>
+      <a href="#inicio" class="btn btn-contorno">Voltar ao topo</a>
+    </div>
+  </footer>
+  <!-- JAVASCRIPT BASICO PARA OS BOTOES INTERATIVOS -->
+  <script>
+    // Boost e placar
+    var boost = 0;
+    var gols = 0;
+    var barra = document.getElementById("barra");
+    var texto = document.getElementById("textoBoost");
+    var btnBoost = document.getElementById("btnBoost");
+    var medidor = document.getElementById("medidor");
+    btnBoost.addEventListener("click", function () {
+      boost = boost >= 100 ? 0 : Math.min(100, boost + 20);
+      barra.style.width = boost + "%";
+      texto.textContent = "Boost: " + boost + "%";
+      medidor.setAttribute("aria-valuenow", boost);
+      btnBoost.classList.toggle("cheio", boost === 100);
+    });
+    document.getElementById("btnGol").addEventListener("click", function () {
+      gols++;
+      document.getElementById("golsAzul").textContent = gols;
+    });
+    // Troca de time (azul / laranja)
+    document.getElementById("btnTime").addEventListener("click", function () {
+      document.body.classList.toggle("time-laranja");
+    });
+    // Controles do Flexbox Lab
+    var lab = document.getElementById("labFlex");
+    var botoes = document.querySelectorAll("[data-acao]");
+    botoes.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var acao = b.getAttribute("data-acao");
+        if (acao === "linha") {
+          lab.className = "lab-flex";
+        } else {
+          lab.classList.toggle(acao);
+        }
+      });
+    });
+    // Slider e formulario
+    document.getElementById("nivel").addEventListener("input", function (e) {
+      document.getElementById("saida").textContent = e.target.value;
+    });
+    document.getElementById("formTime").addEventListener("submit", function (e) {
+      e.preventDefault();
+      document.getElementById("mensagem").classList.add("ativa");
+    });
+  </script>
+</body>
+</html>

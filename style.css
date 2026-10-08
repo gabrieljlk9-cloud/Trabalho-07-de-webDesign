@@ -1,0 +1,324 @@
+/* ROCKET LEAGUE - ARENA DE ESTUDOS (style.css) */
+/* ---------- 1) VARIAVEIS E RESET ---------- */
+:root {
+  --arena: #070d24;
+  --painel: #111b3f;
+  --painel-2: #18265a;
+  --azul: #1f6bff;
+  --laranja: #ff7a1a;
+  --boost: #ffd23f;
+  --gelo: #e8f0ff;
+  --muda: #9db0e0;
+  --destaque: var(--azul);
+  --raio: 14px;
+}
+body.time-laranja { --destaque: var(--laranja); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Rajdhani", "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--gelo);
+  background: var(--arena);
+  background-image:
+    radial-gradient(circle at 15% 0%, #1b2f7a 0%, transparent 45%),
+    radial-gradient(circle at 90% 30%, #5a2a0c 0%, transparent 40%);
+  background-attachment: fixed;
+}
+h1, h2, h3, h4 { font-family: "Russo One", Impact, sans-serif; font-weight: 400; letter-spacing: 0.5px; line-height: 1.15; }
+h2 { font-size: 2.2rem; margin-bottom: 8px; }
+a { color: inherit; text-decoration: none; }
+img,
+svg { max-width: 100%; }
+/* ---------- 2) LAYOUT, HEADER E HERO ---------- */
+.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.secao { padding: 72px 0 24px 0; }
+.secao > .container > p.intro { max-width: 62ch; color: var(--muda); margin-bottom: 28px; }
+.topo { position: sticky; top: 0; z-index: 50; background: rgba(7, 13, 36, 0.92); backdrop-filter: blur(8px); border-bottom: 3px solid var(--destaque); }
+.topo .container {
+  /* FLEX 01: display flex */
+  display: flex;
+  /* FLEX 06: justify-content */
+  justify-content: space-between;
+  /* FLEX 07: align-items */
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.logo { font-family: "Russo One", Impact, sans-serif; font-size: 1.4rem; color: var(--boost); }
+.logo span { color: var(--destaque); }
+.menu {
+  display: flex;
+  list-style: none;
+  /* FLEX 09: gap */
+  gap: 6px;
+}
+.menu a { display: block; padding: 8px 14px; border-radius: 8px; font-weight: 700; transition: background 0.2s, color 0.2s; }
+.menu a:hover,
+.menu a:focus-visible { background: var(--destaque); color: #fff; }
+.hero { padding: 90px 0 60px 0; }
+.hero .container {
+  display: flex;
+  /* FLEX 03: flex-direction */
+  flex-direction: row;
+  align-items: center;
+  column-gap: 40px;
+}
+.hero-texto {
+  /* FLEX 16: flex shorthand */
+  flex: 1 1 420px;
+}
+.hero h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); margin-bottom: 16px; text-transform: uppercase; font-style: italic; }
+.hero h1 em { color: var(--destaque); font-style: normal; text-shadow: 0 0 18px var(--destaque); }
+.hero p { max-width: 48ch; color: var(--muda); margin-bottom: 24px; }
+.hero-acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+.placar {
+  /* FLEX 15: flex-basis */
+  flex-basis: 320px;
+  flex-grow: 0;
+  /* FLEX 14: flex-shrink */
+  flex-shrink: 1;
+  background: var(--painel);
+  border: 3px solid var(--destaque);
+  border-radius: var(--raio);
+  padding: 22px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(31, 107, 255, 0.35);
+}
+.placar .times { display: flex; justify-content: space-around; align-items: center; font-family: "Russo One", Impact, sans-serif; font-size: 3rem; }
+.placar .azul { color: var(--azul); }
+.placar .laranja { color: var(--laranja); }
+.medidor { height: 22px; margin: 18px 0 10px 0; background: #060a1c; border: 2px solid var(--boost); border-radius: 20px; overflow: hidden; }
+.medidor-barra { width: 0%; height: 100%; background: linear-gradient(90deg, var(--laranja), var(--boost)); transition: width 0.3s ease; }
+/* ---------- 3) BOTOES INTERATIVOS ---------- */
+.btn {
+  /* FLEX 02: inline-flex */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  font-family: "Russo One", Impact, sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  background: var(--destaque);
+  border: 3px solid transparent;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.45);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 8px 0 rgba(0, 0, 0, 0.45); }
+.btn:active { transform: translateY(3px); box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45); }
+.btn:focus-visible { outline: 3px dashed var(--boost); outline-offset: 4px; }
+.btn-boost { background: var(--laranja); color: #1b0b00; }
+.btn-contorno { background: transparent; border-color: var(--destaque); }
+.btn-contorno:hover { background: var(--destaque); }
+.btn-boost.cheio { animation: pulsar 0.6s ease infinite alternate; }
+@keyframes pulsar {
+  from { box-shadow: 0 0 0 rgba(255, 210, 63, 0); }
+  to { box-shadow: 0 0 28px var(--boost); }
+}
+/* ---------- 4) MODOS, ABAS E TABELA ---------- */
+.modos {
+  display: flex;
+  /* FLEX 04: flex-wrap */
+  flex-wrap: wrap;
+  /* FLEX 10: row-gap | FLEX 11: column-gap */
+  row-gap: 22px;
+  column-gap: 18px;
+}
+.modo {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--painel);
+  border-left: 6px solid var(--destaque);
+  border-radius: var(--raio);
+  padding: 20px;
+  transition: transform 0.2s, background 0.2s;
+}
+.modo:hover { transform: translateY(-6px) rotate(-1deg); background: var(--painel-2); }
+.modo h3 { margin-bottom: 8px; }
+.modo p { color: var(--muda); margin-bottom: 14px; }
+.etiqueta {
+  /* FLEX 17: align-self */
+  align-self: flex-start;
+  padding: 2px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1b0b00;
+  background: var(--boost);
+  border-radius: 20px;
+}
+.abas-radio { position: absolute; opacity: 0; pointer-events: none; }
+.abas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.abas label {
+  padding: 10px 22px;
+  font-family: "Russo One", Impact, sans-serif;
+  background: var(--painel);
+  border: 2px solid var(--painel-2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.abas label:hover { transform: translateY(-2px); background: var(--painel-2); }
+.painel-aba {
+  display: none;
+  /* FLEX 19: row-reverse */
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 24px;
+  background: var(--painel);
+  border: 3px solid var(--destaque);
+  border-radius: var(--raio);
+  padding: 24px;
+}
+#tab1:checked ~ .paineis .p1,
+#tab2:checked ~ .paineis .p2,
+#tab3:checked ~ .paineis .p3,
+#tab4:checked ~ .paineis .p4 { display: flex; }
+#tab1:checked ~ .abas .l1,
+#tab2:checked ~ .abas .l2,
+#tab3:checked ~ .abas .l3,
+#tab4:checked ~ .abas .l4 { background: var(--destaque); border-color: var(--boost); }
+.carro-icone { flex: 0 0 150px; height: 90px; display: flex; align-items: center; justify-content: center; font-size: 3.4rem; background: #060a1c; border-radius: var(--raio); }
+.tabela-rolagem { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--painel); border-radius: var(--raio); overflow: hidden; }
+th,
+td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--painel-2); }
+th { background: var(--painel-2); font-family: "Russo One", Impact, sans-serif; font-weight: 400; }
+tbody tr:hover { background: rgba(31, 107, 255, 0.2); }
+/* ---------- 5) BOX MODEL LAB: 20 ELEMENTOS ----------
+   Cada elemento #el-01 ... #el-20 define:
+   CONTENT (width/height), PADDING, BORDER e MARGIN.
+   box-sizing: content-box para o Content ser so o conteudo. */
+.lab-caixas {
+  display: flex;
+  flex-wrap: wrap;
+  /* FLEX 05: flex-flow (direction + wrap) */
+  flex-flow: row wrap;
+  /* FLEX 08: align-content */
+  align-content: flex-start;
+  /* FLEX 18: place-content (align + justify) */
+  place-content: flex-start center;
+  background: #060a1c;
+  border: 2px dashed var(--muda);
+  border-radius: var(--raio);
+  padding: 10px;
+}
+.caixa { box-sizing: content-box; background: var(--painel-2); color: var(--gelo); overflow: hidden; font-size: 0.85rem; line-height: 1.25; transition: transform 0.2s, background 0.2s; }
+.caixa:hover { background: var(--destaque); transform: scale(1.06); }
+.caixa h4 { font-size: 0.95rem; color: var(--boost); }
+#el-01 { width: 120px; height: 70px;  padding: 6px;          border: 3px solid var(--azul);    margin: 8px; }
+#el-02 { width: 130px; height: 70px;  padding: 8px 12px;     border: 4px dashed var(--laranja); margin: 10px 6px; }
+#el-03 { width: 110px; height: 80px;  padding: 10px;         border: 2px dotted var(--boost);  margin: 6px 14px; }
+#el-04 { width: 140px; height: 60px;  padding: 4px 16px;     border: 5px double var(--azul);   margin: 12px; }
+#el-05 { width: 100px; height: 90px;  padding: 12px 6px;     border: 3px groove var(--laranja); margin: 4px 10px; }
+#el-06 { width: 150px; height: 64px;  padding: 6px 10px;     border: 3px ridge var(--boost);   margin: 9px; }
+#el-07 { width: 115px; height: 76px;  padding: 9px;          border: 4px solid var(--laranja); margin: 5px 12px; }
+#el-08 { width: 125px; height: 66px;  padding: 5px 14px;     border: 2px dashed var(--azul);   margin: 11px 7px; }
+#el-09 { width: 105px; height: 84px;  padding: 11px 8px;     border: 6px double var(--boost);  margin: 7px; }
+#el-10 { width: 135px; height: 72px;  padding: 7px;          border: 3px dotted var(--laranja); margin: 13px 5px; }
+#el-11 { width: 118px; height: 68px;  padding: 8px 10px;     border: 3px solid var(--boost);   margin: 6px 9px; }
+#el-12 { width: 128px; height: 78px;  padding: 10px 12px;    border: 4px outset var(--azul);   margin: 8px 11px; }
+#el-13 { width: 108px; height: 74px;  padding: 6px 12px;     border: 2px solid var(--laranja); margin: 10px; }
+#el-14 { width: 142px; height: 62px;  padding: 12px;         border: 5px inset var(--boost);   margin: 5px 8px; }
+#el-15 { width: 112px; height: 82px;  padding: 5px 9px;      border: 3px dashed var(--laranja); margin: 12px 6px; }
+#el-16 { width: 122px; height: 70px;  padding: 9px 11px;     border: 4px dotted var(--azul);   margin: 7px 13px; }
+#el-17 { width: 132px; height: 66px;  padding: 7px 13px;     border: 3px double var(--laranja); margin: 9px 5px; }
+#el-18 { width: 104px; height: 86px;  padding: 10px 7px;     border: 2px groove var(--boost);  margin: 11px; }
+#el-19 { width: 138px; height: 64px;  padding: 8px;          border: 6px ridge var(--azul);    margin: 6px 12px; }
+#el-20 { width: 116px; height: 78px;  padding: 11px 10px;    border: 4px solid var(--boost);   margin: 8px 9px; }
+/* ---------- 6) FLEXBOX LAB: 20 PROPRIEDADES ---------- */
+.lab-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: space-evenly;
+  align-items: stretch;
+  background: var(--painel);
+  border: 3px solid var(--painel-2);
+  border-radius: var(--raio);
+  padding: 16px;
+}
+.lab-flex .item {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 150px;
+  padding: 18px;
+  text-align: center;
+  font-family: "Russo One", Impact, sans-serif;
+  background: var(--azul);
+  border-radius: 10px;
+  transition: order 0.2s, transform 0.2s;
+}
+.lab-flex .item:nth-child(even) { background: var(--laranja); color: #1b0b00; }
+/* FLEX 12: order (inverte a posicao do item 1 e 2 por padrao) */
+.lab-flex .item:nth-child(1) { order: 2; }
+.lab-flex .item:nth-child(2) { order: 1; }
+.lab-flex .item:nth-child(3) { align-self: flex-end; }
+/* FLEX 13: flex-grow maior no item 4 */
+.lab-flex .item:nth-child(4) { flex-grow: 3; }
+/* Botoes que trocam o layout do Flexbox Lab */
+.controles-flex { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.lab-flex.coluna { flex-direction: column; }
+.lab-flex.reverso { flex-direction: row-reverse; }
+.lab-flex.invertido {
+  /* FLEX 20: wrap-reverse */
+  flex-wrap: wrap-reverse;
+}
+.lista-flex { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; list-style: none; }
+.lista-flex li { flex: 1 1 240px; padding: 12px 16px; background: var(--painel); border-left: 5px solid var(--boost); border-radius: 8px; font-size: 0.95rem; }
+.lista-flex code { color: var(--boost); font-weight: 700; }
+/* ---------- 7) FORMULARIO, FAQ E RODAPE ---------- */
+.formulario { display: flex; flex-direction: column; gap: 14px; max-width: 560px; background: var(--painel); border: 3px solid var(--destaque); border-radius: var(--raio); padding: 26px; }
+.campo { display: flex; flex-direction: column; gap: 4px; }
+.campo label { font-weight: 700; }
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--gelo);
+  background: #060a1c;
+  border: 2px solid var(--painel-2);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus { outline: none; border-color: var(--boost); box-shadow: 0 0 0 4px rgba(255, 210, 63, 0.25); }
+.campo input:invalid:not(:placeholder-shown) { border-color: #ff4d4d; }
+details { background: var(--painel); border-radius: 10px; margin-bottom: 10px; padding: 14px 18px; border-left: 5px solid var(--destaque); }
+summary { cursor: pointer; font-weight: 700; list-style: none; }
+summary::before { content: "\25B6  "; color: var(--boost); }
+details[open] summary::before { content: "\25BC  "; }
+details p { margin-top: 10px; color: var(--muda); }
+.mensagem { display: none; padding: 12px; background: var(--boost); color: #1b0b00; font-weight: 700; border-radius: 8px; }
+.mensagem.ativa { display: block; }
+.rodape { margin-top: 70px; padding: 30px 0; background: #04081a; border-top: 3px solid var(--destaque); text-align: center; color: var(--muda); }
+.rodape .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+/* ---------- 8) RESPONSIVO E ACESSIBILIDADE ---------- */
+@media (max-width: 800px) {
+  .hero .container { flex-direction: column; text-align: center; }
+  .hero-acoes { justify-content: center; }
+  .hero p { margin-left: auto; margin-right: auto; }
+  .placar { flex-basis: auto; width: 100%; }
+  .painel-aba { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .topo .container { flex-direction: column; gap: 8px; }
+  .menu { flex-wrap: wrap; justify-content: center; }
+  h2 { font-size: 1.7rem; }
+  .secao { padding-top: 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+/* Texto visivel so para leitores de tela (legenda da tabela) */
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
